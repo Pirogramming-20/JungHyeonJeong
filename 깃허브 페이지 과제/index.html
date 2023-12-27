@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>github</title>
+    <style>
+        body, html, p{
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        #wrap-top{
+            width: 1530px;
+            background-color: black;
+        }
+        #header{
+            text-align: left;
+            height: 100px;
+        }
+        #center{
+            display:flex;
+            height: 600px;
+        }
+        #bottom-right-image{
+            position:absolute;
+            bottom: 0;
+            right: 0;
+            height: 20%;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <style>
+            #header-left{
+                display: inline-block;
+                justify-content: flex-start;
+            }
+            #header-left > ul{
+                display: flex;
+                list-style-type: none;
+                justify-content: center;
+                font-size: 18px;
+                line-height: 20px;
+                color: white;
+            }
+            #header-left li{
+                width: 64px;
+                margin-left: 50px;
+                display: flex;
+                justify-content: center;
+            }
+            #header-left li:nth-child(1){
+                width:70px;
+            }
+            
+            #center-left{
+                width: 400px;
+                height: 400px;
+                margin-right: 100px;
+                margin-left: 300px;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 20px;
+            }
+            #center-left h1{
+                font-size: 40px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+            #center-left p{
+                font-size: 17px;
+                text-align: left;
+            }
+
+
+            #center-right{
+                width: 400px;
+                height: 400px;
+                background-color: white;
+                border-radius: 10px;
+                overflow: hidden;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #center-right form{
+                display: flex;
+                flex-direction: column;
+            }
+            #center-right input, #center-right button{
+                border: none;
+                background: transparent;
+                z-index: 1;
+                position: relative;
+                width: 100%;
+            }
+            #center-right input:focus{
+                outline: none;
+            }
+            #center-right .input-wrap{
+                border: 1px solid gray;
+                border-radius: 5px;
+                padding: 10px;
+                background: white;
+                width: 380px;
+                margin-bottom: 15px;
+            }
+            #center-right button{
+                background-color: green;
+                color: white;
+                border-radius: 5px;
+                border: none;
+                font-size: 20px;
+            }
+            #center-right .input-wrap2 {
+                background-color: green;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 10px;
+                width: 380px;
+                height: 40px;
+                margin-bottom: 20px;
+                margin-top: 10px;
+            }
+            #center-right p{
+                font-size: 12px;
+                text-align: left;
+            }
+
+            #header-right{
+                position: absolute;
+                right: 0;
+                display: flex;
+                align-items: center;
+            }
+            #header-right input, #header-right button{
+                border: none;
+            }
+            #sign-in, #sign-up{
+                background-color: transparent;
+                padding: 5px 10px;
+                color: white;
+            }
+            #sign-up-box{
+                border-radius: 10px;
+                background-color: transparent;
+                padding: 5px;
+                border: 1px solid white;
+            }
+        </style>
+        <div id="wrap-top">
+            <div id="header">
+                <div id="header-left">
+                    <ul>
+                        <li>
+                            <span>Why&nbsp;GitHub?</span>
+                        </li>
+                        <li>
+                            <span>Team</span>
+                        </li>
+                        <li>
+                            <span>Enterprise</span>
+                        </li>
+                        <li>
+                            <span>Explore</span>
+                        </li>
+                        <li>
+                            <span>Marketplace</span>
+                        </li>
+                        <li>
+                            <span>Pricing</span>
+                        </li>
+                    </ul>
+                </div>
+                <div id="header-right">
+                    <input id="find" type="text">
+                    <button id="sign-in">Sign in</button>
+                    <div id="sign-up-box">
+                        <button id="sign-up">Sign up</button>
+                    </div>
+                </div>
+            </div>
+            <div id="center">
+                <div id="center-left">
+                    <h1>Built for<br>developers</h1>
+                    <p>GitHub is a development platform inspired by the way you work. From open source to business, you can host and review code, manage projects, and build software alongside 50 million developers.</p>
+                
+                </div>
+                <div id="center-right">
+                    <form>
+                        <label for="username">Username</label>
+                        <div class="input-wrap">
+                            <input id="username" type="text">
+                        </div>
+                        <label for="email">Email</label>
+                        <div class="input-wrap">
+                            <input id="email" type="text">
+                        </div>
+                        <label for="password">Password</label>
+                        <div class="input-wrap">
+                            <input id="password" type="text">
+                        </div>
+                        <p>Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter. Learn more.</p>
+                        <div class="input-wrap2">
+                            <button href="#" id="sign-up">
+                                <span>Sign up for GitHub</span>
+                            </button>
+                        </div>
+                        <p>By clicking "Sign up for GitHub", you agree to our Terms of Service and Privacy Statement. We'll occasionally send you account related emails.</p>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+        <style>
+            #wrap-bottom{
+                background-color: white;
+                display: flex;
+                align-items: flex-end;
+                height: 100px;
+            }
+            
+        </style>
+        <div id="wrap-bottom"></div>
+    </div>
+    <img id="bottom-right-image" src="./footer.png">
+</body>
+</html>
