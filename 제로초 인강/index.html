@@ -84,19 +84,33 @@
         }
         #header{
             text-align:left;
+            position:relative;
         }
         #header-hamburger{
-            margin-top: 18px;
+            position: absolute;
+            top: 18px;
+            left: -10px;
             display: inline-block;
             padding: 10px;
             background: none;
             border: none;
             cursor: pointer;
         }
-        #header-hamburger:hover{
+        #header-hamburger:hover::before{
+            position:absolute;
+            content: '';
+            left: 1px;
+            top: 1px;
+            width: 44px;
+            height: 44px;
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
+        #header-hamburger:hover > div{
+            position: relative;
+            left: 1px;
+            top: 1px;
+        } /*hover 부분 다시 공부해보기*/
         #header-hamburger > div{
             background-image: url(./sp_main.d5b6c236.png);
             width: 26px;
