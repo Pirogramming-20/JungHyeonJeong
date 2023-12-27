@@ -99,6 +99,7 @@
         #header-hamburger:hover::before{
             position:absolute;
             content: '';
+            z-index: 0;
             left: 1px;
             top: 1px;
             width: 44px;
@@ -106,21 +107,27 @@
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
-        #header-hamburger:hover > div{
-            position: relative;
-            left: 1px;
-            top: 1px;
-        } /*hover 부분 다시 공부해보기*/
+        /*hover 부분 다시 공부해보기*/
         #header-hamburger > div{
             background-image: url(./sp_main.d5b6c236.png);
             width: 26px;
             height: 26px;
+            z-index: 1;
+            position:relative;
             background-position:-335px -81px;
             background-repeat:no-repeat;
             background-size: 433px 412px;
         }
         #main{
             height:2000px;
+        }
+        .blind{
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -130,6 +137,7 @@
             <div id="header">
                 <button id="header-hamburger">
                     <div></div>
+                    <span class="blind">확장 영역</span>
                 </button>
             </div>
             <div id="search"></div>
