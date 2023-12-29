@@ -98,13 +98,43 @@
     margin-bottom: 10px;
 }
 
-#content-major{
+#content-major-no{
     font-size: 1.5rem;
     font-weight: 600;
     border-radius: 4px;
     color: white;
-    padding: 5px;
+    padding: 6px 5px 3px 5px;
     background-color: coral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align:baseline;
+}
+
+#content-major-half{
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 4px;
+    color: white;
+    padding: 6px 5px 3px 5px;
+    background-color:darkolivegreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align:baseline;
+}
+
+#content-major-yes{
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 4px;
+    color: white;
+    padding: 6px 5px 3px 5px;
+    background-color:cornflowerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align:baseline;
 }
 
 #intro{
