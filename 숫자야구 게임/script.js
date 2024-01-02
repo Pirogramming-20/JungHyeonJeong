@@ -29,7 +29,7 @@ function check_numbers(){
         let arr = [num1, num2, num3];
         let s = 0;
         let b = 0;
-        console.log(answer);
+        //console.log(answer);
         //console.log(arr);
 
         //s와 b의 값 업데이트
