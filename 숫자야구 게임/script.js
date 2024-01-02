@@ -16,9 +16,12 @@ function check_numbers(){
     if(num1 === '' || num2 === '' || num3 === '') flag = false;
     else flag = true;
 
+    const btn = document.querySelector('.submit-button');
 
     //if 입력값 3개가 모두 들어왔다면 결과 확인 시작
     if(flag){
+        btn.style.border = '2px solid black';
+
         num1 = Number(document.getElementById("number1").value);
         num2 = Number(document.getElementById("number2").value);
         num3 = Number(document.getElementById("number3").value);
@@ -27,7 +30,7 @@ function check_numbers(){
         let s = 0;
         let b = 0;
         console.log(answer);
-        console.log(arr);
+        //console.log(arr);
 
         //s와 b의 값 업데이트
         for(let i = 0; i < 3; i++){
@@ -70,16 +73,15 @@ function check_numbers(){
     }
 
     leftover--;
-    console.log(leftover);
+    //console.log(leftover);
 
-    const btn = document.querySelector('.submit-button');
     if(finish){
         document.getElementById('game-result-img').setAttribute('src', './success.png');
-        btn.style.display = 'none';
+        btn.style.border = 'none';
     }
     else if(!finish && leftover === 0){
         document.getElementById('game-result-img').setAttribute('src', './fail.png');
-        btn.style.display = 'none';
+        btn.style.border = 'none';
     }
 
     //확인하기 누른 후 : 입력창 비우기
