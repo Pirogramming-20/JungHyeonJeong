@@ -72,18 +72,18 @@ function check_numbers(){
     leftover--;
     console.log(leftover);
 
+    const btn = document.querySelector('.submit-button');
     if(finish){
         document.getElementById('game-result-img').setAttribute('src', './success.png');
+        btn.style.display = 'none';
     }
     else if(!finish && leftover === 0){
         document.getElementById('game-result-img').setAttribute('src', './fail.png');
+        btn.style.display = 'none';
     }
 
     //확인하기 누른 후 : 입력창 비우기
     document.getElementById("number1").value = '';
     document.getElementById("number2").value = '';
-    document.getElementById("number3").value = '';
-
-    setTimeout(function reset(){document.getElementById('game-result-img').setAttribute('src', '');}, 5000);
-    
+    document.getElementById("number3").value = '';    
 }
