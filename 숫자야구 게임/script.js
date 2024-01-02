@@ -78,10 +78,12 @@ function check_numbers(){
     if(finish){
         document.getElementById('game-result-img').setAttribute('src', './success.png');
         btn.style.border = 'none';
+        btn.disabled = true;
     }
     else if(!finish && leftover === 0){
         document.getElementById('game-result-img').setAttribute('src', './fail.png');
         btn.style.border = 'none';
+        btn.disabled = true;
     }
 
     //확인하기 누른 후 : 입력창 비우기
