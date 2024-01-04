@@ -18,6 +18,7 @@ while start_number <= 31:
             print("playerA : ", start_number)
             start_number += 1
             if start_number == 32:
+                print("playerB win!")
                 break
         A = False
         continue
@@ -27,6 +28,7 @@ while start_number <= 31:
             print("playerB : ", start_number)
             start_number += 1
             if start_number == 32:
+                print("playerA win!")
                 break
         A = True
         continue
