@@ -67,6 +67,10 @@ function record(){
 
     const checkIcon = document.createElement("i");
     checkIcon.classList.add("fa-regular", "fa-circle");
+    checkIcon.addEventListener("click", function(){
+        this.classList.toggle("fa-circle");
+        this.classList.toggle("fa-circle-check");
+    });
 
     const trashIcon = document.createElement("i");
     trashIcon.classList.add("fa-solid", "fa-trash", "none");
@@ -81,3 +85,30 @@ function record(){
     recordList.appendChild(recordItem);
 }
 
+document.getElementById("allCheckBtn").addEventListener("click", function(){
+    const allBtn = document.getElementById("allCheckBtn");
+    allBtn.classList.toggle("fa-circle");
+    allBtn.classList.toggle("fa-circle-check");
+
+    if (allBtn.classList.contains("fa-circle-check")) {
+        const itemList = document.querySelectorAll('li');
+        itemList.forEach(function(item){
+            const checkIcon = item.querySelector(".fa-circle");
+            if (checkIcon) {
+                checkIcon.classList.remove("fa-circle");
+                checkIcon.classList.add("fa-check-circle");
+            }
+        })
+    }
+
+    if (allBtn.classList.contains("fa-circle")) {
+        const itemList = document.querySelectorAll('li');
+        itemList.forEach(function(item){
+            const checkIcon = item.querySelector(".fa-check-circle");
+            if (checkIcon) {
+                checkIcon.classList.add("fa-circle");
+                checkIcon.classList.remove("fa-check-circle");
+            }
+        })
+    }
+});
