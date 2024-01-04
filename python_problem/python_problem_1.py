@@ -2,6 +2,15 @@ num = 0
 start_number = 1
 A = True #A의 차례인지 체크
 
+def brGame(player1, player2):
+    for i in range(num):
+        global start_number
+        print(player1," : ", start_number)
+        start_number += 1
+        if start_number == 32:
+            print(player2, " win!")
+            break
+
 while start_number <= 31:
     while True:
         try: 
@@ -14,21 +23,11 @@ while start_number <= 31:
             print("정수를 입력하세요")
 
     if A == True:
-        for i in range(num):
-            print("playerA : ", start_number)
-            start_number += 1
-            if start_number == 32:
-                print("playerB win!")
-                break
+        brGame("playerA", "playerB")
         A = False
         continue
     
     if A == False:
-        for i in range(num):
-            print("playerB : ", start_number)
-            start_number += 1
-            if start_number == 32:
-                print("playerA win!")
-                break
+        brGame("playerB", "playerA")
         A = True
         continue
