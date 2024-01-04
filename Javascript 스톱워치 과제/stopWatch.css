@@ -1,0 +1,115 @@
+:root{
+    --color-ivory : rgb(250, 248, 240);
+    --color-gray : rgb(182, 191, 183);
+}
+
+body{
+    background-color: var(--color-ivory);
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+
+.clock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-gray);
+    width: 30vw;
+    height: 200px;
+    border-radius: 20px;
+    justify-content: center;
+    box-shadow: 5px 5px 5px 1px lightgray;
+}
+
+.screen{
+    background-color: var(--color-ivory);
+    height: 40%;
+    width: 80%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.button-container{
+    height: 20%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.button-container > div{
+    border-radius: 20px;
+    border-style: none;
+    background-color: var(--color-ivory);
+    padding: 20px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px 1px gray;
+    display: flex;
+    align-items: center;
+}
+
+.record-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    
+}
+
+.record-box > *{
+    width: 30vw;
+}
+
+.top-bar{
+    background-color: var(--color-gray);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 10px 10px;
+    font-weight: bold;
+}
+
+.record-item{
+    padding: 10px 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.none{
+    color: var(--color-ivory);
+}
+
+#recordList{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+#recordList > li{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}

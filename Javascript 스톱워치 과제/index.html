@@ -3,33 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stopWatch.css">
+    <script src="https://kit.fontawesome.com/b85ea861c2.js" crossorigin="anonymous"></script>
+    <script defer src="./stopWatch.js"></script>
     <title>피로그래밍 스톱워치</title>
 </head>
 <body>
     <div class="container">
         <div class="title">
-            <h1>피로그래밍 스톱워치</h1>
+            <i class="fa-solid fa-stopwatch icon"></i>
+            <h2>피로그래밍 스톱워치</h2>
         </div>
 
         <div class="clock">
-            <div class="time"></div>
+            <div class="screen" id="clockScreen">
+                <div id="time">00:00</div>
+            </div>
             <div class="button-container">
-                <button>start</button>
-                <button>stop</button>
-                <button>reset</button>
+                <div id="startBtn">start</div>
+                <div id="stopBtn">stop</div>
+                <div id="resetBtn">reset</div>
             </div>
         </div>
 
         <div class="record-box">
             <div class="top-bar">
-                <div class="all-check-btn"></div>
+                <div class="all-check-btn">
+                    <i class="fa-regular fa-circle"></i>
+                </div>
                 <div class="top-bar-title">구간 기록</div>
-                <div class="remove-btn"></div>
+                <div class="remove-btn">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
             </div>
 
-            <div class="record-item">
-                <div class="check-btn"></div>
-                <div class="record"></div>
+            <div class="record-item" id="recordItem">
+                <ul id="recordList"></ul>
             </div>
         </div>
     </div>
