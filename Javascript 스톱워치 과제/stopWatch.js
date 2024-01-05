@@ -2,6 +2,8 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const resetBtn = document.getElementById("resetBtn");
 const screen = document.getElementById("clockScreen");
+const recordList = document.getElementById("recordList");
+const allBtn = document.getElementById("allCheckBtn");
 let second = 0, millisecond = 0;
 let intervalId;
 let resultSecond = 0;
@@ -62,15 +64,11 @@ function start(){
 }
 
 function record(){
-    const recordList = document.getElementById("recordList");
+    //const recordList = document.getElementById("recordList");
     const recordItem = document.createElement("li");
 
     const checkIcon = document.createElement("i");
     checkIcon.classList.add("fa-regular", "fa-circle");
-    checkIcon.addEventListener("click", function(){
-        this.classList.toggle("fa-circle");
-        this.classList.toggle("fa-circle-check");
-    });
 
     const trashIcon = document.createElement("i");
     trashIcon.classList.add("fa-solid", "fa-trash", "none");
@@ -83,10 +81,20 @@ function record(){
     recordItem.appendChild(trashIcon);
 
     recordList.appendChild(recordItem);
+
+    /*checkIcon.addEventListener("click", function(){
+        this.classList.toggle("fa-circle");
+        this.classList.toggle("fa-circle-check");
+    });*/
 }
 
+recordList.addEventListener("click", (e) => {
+    console.log(e.target);
+    e.target.classList.toggle("fa-circle");
+    e.target.classList.toggle("fa-circle-check");
+});
+
 document.getElementById("allCheckBtn").addEventListener("click", function(){
-    const allBtn = document.getElementById("allCheckBtn");
     allBtn.classList.toggle("fa-circle");
     allBtn.classList.toggle("fa-circle-check");
 
@@ -96,7 +104,7 @@ document.getElementById("allCheckBtn").addEventListener("click", function(){
             const checkIcon = item.querySelector(".fa-circle");
             if (checkIcon) {
                 checkIcon.classList.remove("fa-circle");
-                checkIcon.classList.add("fa-check-circle");
+                checkIcon.classList.add("fa-circle-check");
             }
         })
     }
@@ -104,11 +112,26 @@ document.getElementById("allCheckBtn").addEventListener("click", function(){
     if (allBtn.classList.contains("fa-circle")) {
         const itemList = document.querySelectorAll('li');
         itemList.forEach(function(item){
-            const checkIcon = item.querySelector(".fa-check-circle");
+            const checkIcon = item.querySelector(".fa-circle-check");
             if (checkIcon) {
                 checkIcon.classList.add("fa-circle");
-                checkIcon.classList.remove("fa-check-circle");
+                checkIcon.classList.remove("fa-circle-check");
             }
         })
     }
+});
+
+document.querySelector(".remove-btn").addEventListener("click", function() {
+    // 모든 li 태그 선택
+    const listItems = document.querySelectorAll("li");
+
+    // 각 li 태그에 대해 처리
+    listItems.forEach(function(item) {
+        // 체크 아이콘을 찾아서 클래스 확인
+        const checkIcon = item.querySelector(".fa-circle-check");
+        if (checkIcon) {
+            // 체크 아이콘이 있으면 해당 li 태그 삭제
+            item.parentNode.removeChild(item);
+        }
+    });
 });
