@@ -15,8 +15,12 @@ def reviews_list(request):
 # 리뷰 디테일 : 영화 제목, 개봉 년도, 감독, 주연, 장르, 별점, 러닝타임, 리뷰 내용
 def reviews_detail(request, pk):
     review = Review.objects.get(id=pk)
+    hour = review.time // 60
+    minute = review.time % 60
     context = {
         "review" : review,
+        "hour" : hour,
+        "minute" : minute
     }
     return render(request, 'reviews_detail.html', context)
 
