@@ -34,5 +34,34 @@ def reviews_create(request):
             time = request.POST['time'],
             content = request.POST['content'],
         )
-        return redirect('/reviews')
+        return redirect('/reviews/')
     return render(request, 'reviews_create.html')
+
+
+# 리뷰 수정하기
+def reviews_update(request, pk):
+    review = Review.objects.get(id=pk)
+    if request.method == "POST":
+        review.title = request.POST['title']
+        review.releaseDate = request.POST['releaseDate']
+        review.genre = request.POST['genre']
+        review.rating = request.POST['rating']
+        review.director = request.POST['director']
+        review.actors = request.POST['actors']
+        review.time = request.POST['time']
+        review.content = request.POST['content']
+        review.save()
+        return redirect(f'/reviews/{pk}')
+    
+    context = {
+        "review" : review
+    }
+    return render(request, 'reviews_update.html', context)
+
+
+# 리뷰 삭제하기
+def reviews_delete(request, pk):
+    if request.method == "POST":
+        review = Review.objects.get(id=pk)
+        review.delete()
+    return redirect('/reviews')

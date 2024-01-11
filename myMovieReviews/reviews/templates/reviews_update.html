@@ -1,0 +1,18 @@
+<h1><a href="/reviews">my Movie reviews</a></h1>
+<br>
+<h2>리뷰 수정하기</h2>
+<form action="/reviews/{{review.id}}/update" method="post">
+    {% csrf_token %}
+    <p>제목 : </p><input type="text" name="title" required value="{{review.title}}"><br>
+    <p>개봉 일자 : </p><input type="date" name="releaseDate" required value="{{review.releaseDate|date:'Y-m-d'}}"><br>
+    <p>감독 : </p><input type="text" name="director" required value="{{review.director}}"><br>
+    <p>주연 : </p><input type="text" name="actors" required value="{{review.actors}}"><br>
+    <p>장르 : </p><input type="text" name="genre" required value="{{review.genre}}"><br>
+    <p>별점 : </p><input type="number" step="0.5" name="rating" required value="{{review.rating}}"><br>
+    <p>러닝타임 : </p><input type="number" name="time" required value="{{review.time}}"><br>
+    <p>리뷰 내용 : </p><textarea name="content" cols="30" rows="10" required>{{review.content}}</textarea><br>
+
+    <div>
+        <input type="submit" value="저장">
+    </div>
+</form>
