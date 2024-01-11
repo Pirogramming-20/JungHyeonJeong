@@ -1,0 +1,11 @@
+<h1>my Movie reviews</h1>
+<a href="/reviews/create"> 리뷰 작성하기 </a>
+<!-- 보여야할 내용 : 영화 제목, 개봉 년도, 장르, 별점 -->
+
+{% for review in reviews %}
+    <h3><a href="/reviews/{{review.id}}">{{review.title}}</a></h3>
+    <p>{{review.releaseDate}}</p>
+    <p>{{review.genre}}</p>
+    <p>{{review.rating}}</p>
+    <br>
+{% endfor %}
