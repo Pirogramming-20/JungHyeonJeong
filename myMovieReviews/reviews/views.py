@@ -39,7 +39,10 @@ def reviews_create(request):
             content = request.POST['content'],
         )
         return redirect('/reviews/')
-    return render(request, 'reviews_create.html')
+    context = {
+        'genreChoices' : Review.genreChoices, 
+    }
+    return render(request, 'reviews_create.html', context)
 
 
 # 리뷰 수정하기
@@ -58,7 +61,8 @@ def reviews_update(request, pk):
         return redirect(f'/reviews/{pk}')
     
     context = {
-        "review" : review
+        "review" : review,
+        'genreChoices' : Review.genreChoices,
     }
     return render(request, 'reviews_update.html', context)
 
