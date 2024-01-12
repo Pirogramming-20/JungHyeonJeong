@@ -1,0 +1,57 @@
+body{
+    margin-left : 50px;
+    margin-right: 50px;
+}
+
+#top-bar > span {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#top-bar > span > a{
+    text-decoration: none;
+    color: black;
+}
+
+#line{
+    margin-top: 10px;
+    background-color: black;
+    height: 1px;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+}
+
+#content{
+    background-color: rgb(231, 235, 240);
+    width: 60vw;
+    margin: 20px;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+#btns{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#btns > a{
+    text-decoration: none;
+    color: gray;
+}
+
+#btns > form {
+    margin-top: 10px;
+}
+
+#btns > form > input{
+    color: gray;
+    border: 0;
+    background-color: transparent;
+    font-size: 17px;
+    margin-left: -8px;
+    margin-bottom: 11px;
+}

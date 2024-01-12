@@ -1,24 +1,47 @@
-<h1><a href="/">my Movie reviews</a></h1>
-<!-- 보여야할 내용 : 영화 제목, 개봉 년도, 감독, 주연, 장르, 별점, 러닝타임, 리뷰 내용 -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>{{review.title}}</h2>
-<p>개봉 일자 : {{review.releaseDate}}</p>
-<p>감독 : {{review.director}}</p>
-<p>주연 : {{review.actors}}</p>
-<p>장르 : {{review.genre}}</p>
-<p>별점 : {{review.rating}}</p>
-{% if minute == 0 %}
-    <p>러닝타임 : {{hour}}시간</p>
-{% elif hour == 0 %}
-    <p>러닝타임 : {{minute}}분</p>
-{% else %}
-    <p>러닝타임 : {{hour}}시간 {{minute}}분</p>
-{% endif %}
-<p>{{review.content}}</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reviewDetail.css' %}">
+    <title>review detail</title>
+</head>
 
-<a href="/{{review.id}}/update">수정하기</a>
+<body>
+    <div id="top-bar">
+        <span><a href="/">my Movie reviews</a></span>
+    </div>
+    <div id="line"></div>
 
-<form action="/{{review.id}}/delete" method="post">
-    {% csrf_token %}
-    <input type="submit" value="삭제하기">
-</form>
+    <div id="container">
+        <div id="content">
+            <div id="information">
+                <h2>{{review.title}}</h2>
+                <p>개봉 일자 : {{review.releaseDate}}</p>
+                <p>감독 : {{review.director}}</p>
+                <p>주연 : {{review.actors}}</p>
+                <p>장르 : {{review.genre}}</p>
+                <p>별점 : {{review.rating}}</p>
+                {% if minute == 0 %}
+                <p>러닝타임 : {{hour}}시간</p>
+                {% elif hour == 0 %}
+                <p>러닝타임 : {{minute}}분</p>
+                {% else %}
+                <p>러닝타임 : {{hour}}시간 {{minute}}분</p>
+                {% endif %}
+                <p>{{review.content}}</p>
+            </div>
+            <div id="btns">
+                <a href="/{{review.id}}/update">수정하기</a>
+                <form action="/{{review.id}}/delete" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="삭제하기">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

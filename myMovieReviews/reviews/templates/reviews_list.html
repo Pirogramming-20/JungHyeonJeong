@@ -1,34 +1,64 @@
-<h1>my Movie reviews</h1>
-<a href="/create"> 리뷰 작성하기 </a>
-<!-- 보여야할 내용 : 영화 제목, 개봉 년도, 장르, 별점 -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="">
-    <select name="orderBy">
-        {% if orderCondition == "제목 이름 순" %}
-            <option value="제목 이름 순" selected>제목 이름 순</option>
-        {% else %}
-            <option value="제목 이름 순">제목 이름 순</option>
-        {% endif %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reviewList.css' %}">
+    <title>review 목록</title>
+</head>
 
-        {% if orderCondition == "별점 순" %}
-            <option value="별점 순" selected>별점 순</option>
-        {% else %}
-            <option value="별점 순">별점 순</option>
-        {% endif %}
+<body>
+    <div id="top-bar">
+        <span>my Movie reviews</span>
+        <a href="/create"> 리뷰 작성하기 </a>
+    </div>
+    <div id="line"></div>
 
-        {% if orderCondition == "상영 시간 순" %}
-            <option value="상영 시간 순" selected>상영 시간 순</option>
-        {% else %}
-            <option value="상영 시간 순">상영 시간 순</option>
-        {% endif %}
-    </select>
-    <input type="submit" value="정렬">
-</form>
+    <div id="order">
+        <form action="">
+            <select name="orderBy">
+                {% if orderCondition == "제목 이름 순" %}
+                <option value="제목 이름 순" selected>제목 이름 순</option>
+                {% else %}
+                <option value="제목 이름 순">제목 이름 순</option>
+                {% endif %}
+                {% if orderCondition == "별점 순" %}
+                <option value="별점 순" selected>별점 순</option>
+                {% else %}
+                <option value="별점 순">별점 순</option>
+                {% endif %}
+                {% if orderCondition == "상영 시간 순" %}
+                <option value="상영 시간 순" selected>상영 시간 순</option>
+                {% else %}
+                <option value="상영 시간 순">상영 시간 순</option>
+                {% endif %}
+            </select>
+            <input type="submit" value="정렬">
+        </form>
+    </div>
 
-{% for review in reviews %}
-    <h3><a href="/{{review.id}}">{{review.title}}</a></h3>
-    <p>{{review.releaseDate}}</p>
-    <p>{{review.genre}}</p>
-    <p>{{review.rating}}</p>
-    <br>
-{% endfor %}
+    <div id="container">
+        {% for review in reviews %}
+        <div>
+            <h3><a href="/{{review.id}}">{{review.title}}</a></h3>
+            <div>
+                <span class="element">개봉 일자&nbsp</span>
+                <span class="content">{{review.releaseDate}}</span>
+            </div>
+            <div>
+                <span class="element">장르&nbsp</span>
+                <span class="content">{{review.genre}}</span>
+            </div>
+            <div>
+                <span class="element">별점&nbsp</span>
+                <span class="content">{{review.rating}}</span>
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
