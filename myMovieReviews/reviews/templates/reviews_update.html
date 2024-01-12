@@ -1,7 +1,7 @@
-<h1><a href="/reviews">my Movie reviews</a></h1>
+<h1><a href="/">my Movie reviews</a></h1>
 <br>
 <h2>리뷰 수정하기</h2>
-<form action="/reviews/{{review.id}}/update" method="post">
+<form action="/{{review.id}}/update" method="post">
     {% csrf_token %}
     <p>제목 : </p><input type="text" name="title" required value="{{review.title}}"><br>
     <p>개봉 일자 : </p><input type="date" name="releaseDate" required value="{{review.releaseDate|date:'Y-m-d'}}"><br>

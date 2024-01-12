@@ -47,7 +47,7 @@ def reviews_create(request):
             time = request.POST['time'],
             content = request.POST['content'],
         )
-        return redirect('/reviews/')
+        return redirect('/')
     context = {
         'genreChoices' : Review.genreChoices, 
     }
@@ -67,7 +67,7 @@ def reviews_update(request, pk):
         review.time = request.POST['time']
         review.content = request.POST['content']
         review.save()
-        return redirect(f'/reviews/{pk}')
+        return redirect(f'/{pk}')
     
     context = {
         "review" : review,
@@ -81,4 +81,4 @@ def reviews_delete(request, pk):
     if request.method == "POST":
         review = Review.objects.get(id=pk)
         review.delete()
-    return redirect('/reviews')
+    return redirect('/')

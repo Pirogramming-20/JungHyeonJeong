@@ -1,4 +1,4 @@
-<h1><a href="/reviews">my Movie reviews</a></h1>
+<h1><a href="/">my Movie reviews</a></h1>
 <!-- 보여야할 내용 : 영화 제목, 개봉 년도, 감독, 주연, 장르, 별점, 러닝타임, 리뷰 내용 -->
 
 <h2>{{review.title}}</h2>
@@ -9,14 +9,16 @@
 <p>별점 : {{review.rating}}</p>
 {% if minute == 0 %}
     <p>러닝타임 : {{hour}}시간</p>
+{% elif hour == 0 %}
+    <p>러닝타임 : {{minute}}분</p>
 {% else %}
     <p>러닝타임 : {{hour}}시간 {{minute}}분</p>
 {% endif %}
 <p>{{review.content}}</p>
 
-<a href="/reviews/{{review.id}}/update">수정하기</a>
+<a href="/{{review.id}}/update">수정하기</a>
 
-<form action="/reviews/{{review.id}}/delete" method="post">
+<form action="/{{review.id}}/delete" method="post">
     {% csrf_token %}
     <input type="submit" value="삭제하기">
 </form>
