@@ -32,31 +32,12 @@ body{
     border-radius: 5px;
 }
 
-#btns{
+.element{
+    margin-bottom: 15px;
+}
+
+#submit{
     display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-#btns > a{
-    text-decoration: none;
-    color: gray;
-}
-
-#btns > form {
+    justify-content: right;
     margin-top: 10px;
-}
-
-#btns > form > input{
-    color: gray;
-    border: 0;
-    background-color: transparent;
-    font-size: 17px;
-    margin-left: -8px;
-    margin-bottom: 11px;
-}
-
-#reviewContent{
-    background-color: rgb(243, 243, 243);
-    padding: 15px;
 }

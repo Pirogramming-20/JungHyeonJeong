@@ -1,24 +1,64 @@
-<h1><a href="/">my Movie reviews</a></h1>
-<!-- 입력해야할 내용 : 영화 제목, 개봉 년도, 감독, 주연, 장르, 별점, 러닝타임, 리뷰 내용 -->
-<br>
-<h2>새로운 리뷰 작성하기</h2>
-<form action="/create" method="post">
-    {% csrf_token %}
-    <p>제목 : </p><input type="text" name="title" required><br>
-    <p>개봉 일자 : </p><input type="date" name="releaseDate" required><br>
-    <p>감독 : </p><input type="text" name="director" required><br>
-    <p>주연 : </p><input type="text" name="actors" required><br>
-    <p>장르 : </p>
-    <select name="genre" required>
-        {% for genre_db, genre_value in genreChoices %}
-            <option value="{{genre_db}}">{{genre_value}}</option>
-        {% endfor %}
-    </select><br>
-    <p>별점 : </p><input type="number" step="0.5" name="rating" required><br>
-    <p>러닝타임 : </p><input type="number" name="time" required><br>
-    <p>리뷰 내용 : </p><textarea name="content" cols="30" rows="10" required></textarea><br>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-    <div>
-        <input type="submit" value="저장">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reviewCreate.css' %}">
+    <title>review 작성</title>
+</head>
+
+<body>
+    <div id="top-bar">
+        <span><a href="/">my Movie reviews</a></span>
     </div>
-</form>
+    <div id="line"></div>
+    <br>
+    <h2>새로운 리뷰 작성하기</h2>
+    <div id="container">
+        <div id="content">
+            <form action="/create" method="post">
+                {% csrf_token %}
+                <div class="title element">
+                    <span>제목 : </span>
+                    <input type="text" name="title" required><br>
+                </div>
+                <div class="releaseDate element">
+                    <span >개봉 일자 : </span>
+                    <input type="date" name="releaseDate" required><br>
+                </div>
+                <div class="director element">
+                    <span>감독 : </span>
+                    <input type="text" name="director" required><br>
+                </div>
+                <div class="actors element">
+                    <span>주연 : </span>
+                    <input type="text" name="actors" required><br>
+                </div>
+                <div class="genre element">
+                    <span>장르 : </span>
+                    <select name="genre" required>
+                        {% for genre_db, genre_value in genreChoices %}
+                        <option value="{{genre_db}}">{{genre_value}}</option>
+                        {% endfor %}
+                    </select><br>
+                </div>
+                <div class="rating element">
+                    <span>별점 : </span>
+                    <input type="number" step="0.5" name="rating" required><br>
+                </div>
+                <div class="time element">
+                    <span>러닝타임 : </span>
+                    <input type="number" name="time" required><br>
+                </div>
+                <p>리뷰 내용 : </p><textarea name="content" cols="100" rows="10" required></textarea><br>
+                <div id="submit">
+                    <input type="submit" value="저장">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

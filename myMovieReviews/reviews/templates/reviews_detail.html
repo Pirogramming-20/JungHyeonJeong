@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'reviewDetail.css' %}">
-    <title>review detail</title>
+    <title>review 세부사항</title>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                 {% else %}
                 <p>러닝타임 : {{hour}}시간 {{minute}}분</p>
                 {% endif %}
-                <p>{{review.content}}</p>
+                <p id="reviewContent" style="white-space:pre-wrap;">{{review.content}}</p>
             </div>
             <div id="btns">
                 <a href="/{{review.id}}/update">수정하기</a>
