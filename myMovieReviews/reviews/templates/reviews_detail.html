@@ -7,7 +7,11 @@
 <p>주연 : {{review.actors}}</p>
 <p>장르 : {{review.genre}}</p>
 <p>별점 : {{review.rating}}</p>
-<p>러닝타임 : {{hour}}시간 {{minute}}분</p>
+{% if minute == 0 %}
+    <p>러닝타임 : {{hour}}시간</p>
+{% else %}
+    <p>러닝타임 : {{hour}}시간 {{minute}}분</p>
+{% endif %}
 <p>{{review.content}}</p>
 
 <a href="/reviews/{{review.id}}/update">수정하기</a>

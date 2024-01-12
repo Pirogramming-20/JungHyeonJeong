@@ -5,9 +5,18 @@ from .models import *
 
 # 리뷰 리스트 : 영화 제목, 개봉 년도, 장르, 별점
 def reviews_list(request):
+    orderCondition = request.GET.get('orderBy')
     reviews = Review.objects.all()
+    if orderCondition == "별점 순":
+        reviews = Review.objects.order_by('-rating')
+    elif orderCondition == "상영 시간 순":
+        reviews = Review.objects.order_by('time')
+    else:
+        reviews = Review.objects.order_by('title')
+        
     context = {
         "reviews" : reviews,
+        "orderCondition" : orderCondition,
     }
     return render(request, 'reviews_list.html', context)
 

@@ -2,6 +2,29 @@
 <a href="/reviews/create"> 리뷰 작성하기 </a>
 <!-- 보여야할 내용 : 영화 제목, 개봉 년도, 장르, 별점 -->
 
+<form action="">
+    <select name="orderBy">
+        {% if orderCondition == "제목 이름 순" %}
+            <option value="제목 이름 순" selected>제목 이름 순</option>
+        {% else %}
+            <option value="제목 이름 순">제목 이름 순</option>
+        {% endif %}
+
+        {% if orderCondition == "별점 순" %}
+            <option value="별점 순" selected>별점 순</option>
+        {% else %}
+            <option value="별점 순">별점 순</option>
+        {% endif %}
+
+        {% if orderCondition == "상영 시간 순" %}
+            <option value="상영 시간 순" selected>상영 시간 순</option>
+        {% else %}
+            <option value="상영 시간 순">상영 시간 순</option>
+        {% endif %}
+    </select>
+    <input type="submit" value="정렬">
+</form>
+
 {% for review in reviews %}
     <h3><a href="/reviews/{{review.id}}">{{review.title}}</a></h3>
     <p>{{review.releaseDate}}</p>
