@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block head%}
+
+    {% endblock %}
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="{% url 'ideas:main' %}">
+            <p>My SW Idea Manage</p>
+        </a>
+        <a href="{% url 'ideas:create' %}"><p>아이디어 등록</p></a>
+        <a href=""><p>아이디어 관리</p></a>
+        <a href="{% url 'devtools:create' %}"><p>개발툴 등록</p></a>
+        <a href="{% url 'devtools:list' %}"><p>개발툴 관리</p></a>
+    </div>
+    {%block content%}
+
+    {%endblock%}
+</body>
+</html>

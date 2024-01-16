@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>devtool update</title>
+{% endblock %}
+
+
+{% block content %}
+    <form
+        action="{% url 'devtools:update' pk %}"
+        method="post"
+    >
+        {%csrf_token%} {{form.as_p}}
+        <button class="btn">SUBMIT</button>
+    </form>
+{% endblock %}

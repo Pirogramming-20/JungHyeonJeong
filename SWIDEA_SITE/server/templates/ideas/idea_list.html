@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>idea list</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="container-title">
+            <p>Idea List</p>
+            <p>나의 아이디어를 잊지 말고 기록해보세요</p>
+        </div>
+
+        <div class="order">
+            <form action="">
+                <select name="orderBy">
+                    {% if orderCondition == "이름순" %}
+                    <option value="이름순" selected>이름순</option>
+                    {% else %}
+                    <option value="이름순">이름순</option>
+                    {% endif %}
+                    {% if orderCondition == "등록순" %}
+                    <option value="등록순" selected>등록순</option>
+                    {% else %}
+                    <option value="등록순">등록순</option>
+                    {% endif %}
+                    {% if orderCondition == "최신순" %}
+                    <option value="최신순" selected>최신순</option>
+                    {% else %}
+                    <option value="최신순">최신순</option>
+                    {% endif %}
+                </select>
+                <input type="submit" value="정렬">
+            </form>
+        </div>
+
+        <div class="content">
+            {% for idea in ideas %}
+                <div class="item">
+                    <img src="{{ idea.image.url }}" alt="사진">
+                    <div class="info">
+                        <a href="{% url 'ideas:detail' idea.pk %}" class="title">
+                            {{ idea.title }}
+                        </a>
+                        <p class="devtool">예상 개발 툴 : {{ idea.devtool }}</p>
+                        <p class="interest">아이디어 관심도 : {{ idea.interest }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
