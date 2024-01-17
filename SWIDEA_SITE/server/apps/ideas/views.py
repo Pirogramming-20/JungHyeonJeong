@@ -26,6 +26,7 @@ def main(request):
     }
     return render(request, 'ideas/idea_list.html', ctx)
 
+@csrf_exempt
 def star(request, pk):
     idea = Idea.objects.get(id=pk)
     if idea.ideaStar == False:
@@ -33,7 +34,7 @@ def star(request, pk):
     elif idea.ideaStar == True:
         idea.ideaStar = False
     idea.save()
-    return redirect('ideas:main')
+    return HttpResponse(str(idea.ideaStar))
 
 
 def create(request):
@@ -56,15 +57,6 @@ def detail(request, pk):
         'devtool' : devtool,
     }
     return render(request, 'ideas/idea_detail.html', ctx)
-
-def star_detail(request, pk):
-    idea = Idea.objects.get(id=pk)
-    if idea.ideaStar == False:
-        idea.ideaStar = True
-    elif idea.ideaStar == True:
-        idea.ideaStar = False
-    idea.save()
-    return redirect('ideas:detail', pk)
 
 def update(request, pk):
     idea = Idea.objects.get(id=pk)

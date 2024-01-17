@@ -13,18 +13,36 @@
             <p>개발툴 목록 페이지입니다. 자신이 사용가능한 개발들의 목록을 확인해 보세요.</p>
         </div>
 
+        <div class="search-box">
+            <form action="">
+                <input id="search" placeholder="검색어..." data-url="{% url 'devtools:search' %}"/>
+            </form>
+        </div>
+
         <div class="content">
-            {% for devtool in devtools %}
-                <div class="item">
-                    <div class="info">
-                        <a href="{% url 'devtools:detail' devtool.pk %}" class="name">
-                            {{ devtool.name }}
-                        </a>
-                        <p class="kind">{{ devtool.kind }}</p>
-                        <p class="content">{{ devtool.content }}</p>
-                    </div>
-                </div>
-            {% endfor %}
+            {% include 'devtools/devtool_list_part.html' %}
         </div>
     </div>
+{% endblock %}
+
+{%block script%}
+<script>
+    const search = document.getElementById('search');
+    const content = document.querySelector('.content');
+
+    search.addEventListener('keyup', (event)=>{
+        const url = event.target.getAttribute('data-url');
+        fetch(url,{
+            method: 'POST',
+            headers : {
+                'Content-Type' : 'text',
+            },
+            body: event.target.value,
+        })
+        .then(response => response.text())
+        .then(text =>{
+            content.innerHTML = text;
+        })
+    })
+</script>
 {% endblock %}

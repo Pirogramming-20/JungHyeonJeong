@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Devtool
 from .forms import DevtoolForm
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def devtools_list(request):
@@ -49,3 +50,15 @@ def delete(request, pk):
     if request.method == 'POST':
         Devtool.objects.get(id=pk).delete()
     return redirect('devtools:list')
+
+@csrf_exempt
+def search(request):
+    search_txt = request.body.decode()
+
+    devtools = Devtool.objects.all()
+    if search_txt:
+        devtools = devtools.filter(name__contains=search_txt)
+    ctx = {
+        'devtools' : devtools,
+    }
+    return render(request, 'devtools/devtool_list_part.html', ctx, content_type='text/plain')

@@ -17,13 +17,11 @@
                 <img src="{{ idea.image.url }}" alt="사진">
                 <div class="info">
                     <p class="title">{{ idea.title }}</p>
-                    <a href="{% url 'ideas:star_detail' idea.pk %}" class="star">
                         {% if idea.ideaStar == False %}
                             <i class="fa-regular fa-star"></i>
                         {% elif idea.ideaStar == True %}
                             <i class="fa-solid fa-star"></i>
                         {% endif %}
-                    </a>
                     <p class="interest">1. 아이디어 관심도 : {{ idea.interest }}</p>
                     <p class="devtool">2. 예상 개발 툴 : 
                         <a href="{% url 'devtools:detail' devtool.pk %}">{{ idea.devtool }}</a>

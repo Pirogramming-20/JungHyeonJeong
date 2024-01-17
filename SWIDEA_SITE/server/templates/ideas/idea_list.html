@@ -45,13 +45,13 @@
             {% for idea in ideas %}
                 <div class="item">
                     <img src="{{ idea.image.url }}" alt="사진">
-                    <a href="{% url 'ideas:star' idea.pk %}" class="star">
+                    <div data-url="{% url 'ideas:star' idea.pk %}" class="star">
                         {% if idea.ideaStar == False %}
                             <i class="fa-regular fa-star"></i>
                         {% elif idea.ideaStar == True %}
                             <i class="fa-solid fa-star"></i>
                         {% endif %}
-                    </a>
+                    </div>
                     <div class="info">
                         <a href="{% url 'ideas:detail' idea.pk %}" class="title">
                             {{ idea.title }}
@@ -102,5 +102,26 @@
             countText[index].innerText = text;
         });
     }
+
+    const star = document.querySelectorAll('.star');
+
+    star.forEach((star) =>{
+        star.addEventListener('click', (event)=>{
+            const url = event.currentTarget.getAttribute('data-url');
+            fetch(url, {
+                method: 'POST',
+            })
+            .then(response => response.text())
+            .then(text =>{
+                const icon = event.target;
+                if (text == 'True'){
+                    icon.className = 'fa-solid fa-star';
+                }
+                else{
+                    icon.className = 'fa-regular fa-star';
+                }
+            })
+        })
+    })
 </script>
 {%endblock%}

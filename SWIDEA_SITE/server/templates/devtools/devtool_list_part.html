@@ -1,0 +1,11 @@
+{% for devtool in devtools %}
+<div class="item">
+    <div class="info">
+        <a href="{% url 'devtools:detail' devtool.pk %}" class="name">
+            {{ devtool.name }}
+        </a>
+        <p class="kind">{{ devtool.kind }}</p>
+        <p class="devtool_content">{{ devtool.content }}</p>
+    </div>
+</div>
+{% endfor %}

@@ -9,7 +9,6 @@ urlpatterns = [
     path('count/<int:pk>', count, name='count'),
     path('create/', create, name='create'),
     path('detail/<int:pk>/', detail, name='detail'),
-    path('detail/<int:pk>/star/', star_detail, name='star_detail'),
     path('update/<int:pk>/', update, name='update'),
     path('delete/<int:pk>/', delete, name='delete'),
 ]
