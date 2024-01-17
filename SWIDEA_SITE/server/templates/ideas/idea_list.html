@@ -77,7 +77,6 @@
 
     plus.forEach((plus, index) => {
         plus.addEventListener('click', (event)=>{
-            console.log('a')
             const url = event.target.getAttribute('data-url');
             count_request(url, 'plus', index);
         })
@@ -85,7 +84,6 @@
 
     minus.forEach((minus, index) => {
         minus.addEventListener('click', (event)=>{
-            console.log('b')
             const url = event.target.getAttribute('data-url');
             count_request(url, 'minus', index);
         })
