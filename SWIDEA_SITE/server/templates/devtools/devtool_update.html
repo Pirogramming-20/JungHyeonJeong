@@ -7,11 +7,20 @@
 
 
 {% block content %}
-    <form
-        action="{% url 'devtools:update' pk %}"
-        method="post"
-    >
-        {%csrf_token%} {{form.as_p}}
-        <button class="btn">SUBMIT</button>
-    </form>
+    <div class="container">
+        <div class="title-box">
+            <div class="container-title">
+                <p>DevTool Detail Update</p>
+                <p>개발툴 세부내용 수정 페이지입니다. 개발툴에 대해 수정사항이 있으면 고쳐보아요.</p>
+            </div>
+        </div>
+
+        <form
+            action="{% url 'devtools:update' pk%}"
+            method="post"
+        >
+            {%csrf_token%} {{form.as_p}}
+            <button class="btn">SUBMIT</button>
+        </form>
+    </div>
 {% endblock %}

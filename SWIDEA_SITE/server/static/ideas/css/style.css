@@ -1,0 +1,203 @@
+@import "./nomalize.css";
+
+body{
+    background-image: url(../image/background_img.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.line{
+    background-color: white;
+    height: 1px;
+    margin-bottom: 40px;
+}
+
+.nav-bar-content{
+    color: white;
+    font-size: 20px;
+}
+
+.nav-bar-logo{
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 30px;
+    position: relative;
+}
+
+.title-box{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.container-title > p:nth-child(1){
+    color: dodgerblue;
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+.container-title > p:nth-child(2){
+    font-weight: bold;
+}
+
+.order{
+    margin: 10px 0;
+    display: flex;
+    justify-content: right;
+}
+
+.content{
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.item{
+    width: 320px;
+    position: relative;
+}
+
+
+.item img{
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.item-content{
+    padding: 10px 40px;
+}
+
+.star-list{
+    position: absolute;
+    right: 70px;
+    top: 10px;
+}
+
+.title{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.interest{
+    display: flex;
+    gap: 10px;
+}
+
+.interest p{
+    margin: 0;
+}
+
+.page-box{
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.page-link{
+    color: black;
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: white;
+    padding: 10px;
+}
+
+.devtool-content{
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.btns{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.btns a{
+    color: black;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.btn{
+    border: 0;
+    background-color: transparent;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.search-box{
+    display: flex;
+    justify-content: right;
+}
+
+
+.info-dev{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.name{
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.line-2{
+    height: 1px;
+    background-color: black;
+}
+
+.name-2{
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 5px 0;
+}
+
+.list p{
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.list-content{
+    color: black;
+    padding: 5px;
+    background-color: white;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.list{
+    margin: 10px 0;
+}

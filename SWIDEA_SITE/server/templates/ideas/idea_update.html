@@ -7,12 +7,21 @@
 
 
 {% block content %}
-    <form
-        action="{% url 'ideas:update' pk %}"
-        enctype="multipart/form-data"
-        method="post"
-    >
-        {%csrf_token%} {{form.as_p}}
-        <button class="btn">SUBMIT</button>
-    </form>
+    <div class="container">
+        <div class="title-box">
+            <div class="container-title">
+                <p>Idea Detail Update</p>
+                <p>아이디어 세부내용 수정 페이지입니다. 아이디어를 구체화하거나 내용을 변경해 보아요.</p>
+            </div>
+        </div>
+
+        <form
+            action="{% url 'ideas:update' pk %}"
+            enctype="multipart/form-data"
+            method="post"
+        >
+            {%csrf_token%} {{form.as_p}}
+            <button class="btn">SUBMIT</button>
+        </form>
+    </div>
 {% endblock %}

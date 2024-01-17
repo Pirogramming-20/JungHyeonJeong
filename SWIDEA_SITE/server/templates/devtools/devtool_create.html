@@ -7,11 +7,20 @@
 
 
 {% block content %}
-    <form
-        action="{% url 'devtools:create' %}"
-        method="post"
-    >
-        {%csrf_token%} {{form.as_p}}
-        <button class="btn">SUBMIT</button>
-    </form>
+    <div class="container">
+        <div class="title-box">
+            <div class="container-title">
+                <p>DevTool Register</p>
+                <p>개발툴 등록 페이지입니다. 자신이 다룰 수 있는 개발툴을 등록해 보세요.</p>
+            </div>
+        </div>
+
+        <form
+            action="{% url 'devtools:create' %}"
+            method="post"
+        >
+            {%csrf_token%} {{form.as_p}}
+            <button class="btn">SUBMIT</button>
+        </form>
+    </div>
 {% endblock %}

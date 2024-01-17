@@ -20,8 +20,8 @@ def create(request):
         return render(request, 'devtools/devtool_create.html', ctx)
     form = DevtoolForm(request.POST)
     if form.is_valid():
-        form.save()
-    return redirect('devtools:list')
+        devtool = form.save()
+    return redirect('devtools:detail', devtool.pk)
 
 def detail(request, pk):
     devtool = Devtool.objects.get(id=pk)

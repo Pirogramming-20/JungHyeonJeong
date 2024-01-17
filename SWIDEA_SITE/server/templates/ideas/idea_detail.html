@@ -8,9 +8,11 @@
 
 {% block content %}
     <div class="container">
-        <div class="container-title">
-            <p>Idea Detail</p>
-            <p>아이디어 세부내용 페이지입니다. 당신이 구현하고자 한 아이디어들을 자세히 살펴보세요</p>
+        <div class="title-box">
+            <div class="container-title">
+                <p>Idea Detail</p>
+                <p>아이디어 세부내용 페이지입니다. 당신이 구현하고자 한 아이디어들을 자세히 살펴보세요</p>
+            </div>
         </div>
         <div class="content">
             <div class="item">
@@ -24,19 +26,19 @@
                         {% endif %}
                     <p class="interest">1. 아이디어 관심도 : {{ idea.interest }}</p>
                     <p class="devtool">2. 예상 개발 툴 : 
-                        <a href="{% url 'devtools:detail' devtool.pk %}">{{ idea.devtool }}</a>
+                        <a href="{% url 'devtools:detail' devtool.pk %}" class="devtool-content">{{ idea.devtool }}</a>
                     </p>
                     <p class="content">3. 아이디어 설명 : {{ idea.content }}</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="btns">
-        <a href="{% url 'ideas:update' idea.pk %}" class="btn">수정하기</a>
-        <a href="{% url 'ideas:main' %}">목록</a>
-        <form action="{% url 'ideas:delete' idea.pk %}" method="POST">
-            {%csrf_token%}
-            <button type="submit" class="btn">삭제하기</button>
-        </form>
+        <div class="btns">
+            <a href="{% url 'ideas:update' idea.pk %}" class="btn">수정하기</a>
+            <a href="{% url 'ideas:main' %}">목록</a>
+            <form action="{% url 'ideas:delete' idea.pk %}" method="POST">
+                {%csrf_token%}
+                <button type="submit" class="btn">삭제하기</button>
+            </form>
+        </div>
     </div>
 {% endblock %}

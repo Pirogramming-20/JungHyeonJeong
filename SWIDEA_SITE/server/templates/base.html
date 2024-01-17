@@ -5,23 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/b85ea861c2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{%static 'ideas/css/style.css'%}">
     {%block head%}
 
     {% endblock %}
 </head>
 <body>
     <div class="nav-bar">
-        <a href="{% url 'ideas:main' %}">
-            <p>My SW Idea Manage</p>
+        <a href="{% url 'ideas:main' %}" class="nav-bar-content nav-bar-logo">
+            My SW Idea Manage
         </a>
-        <a href="{% url 'ideas:create' %}"><p>아이디어 등록</p></a>
-        <a href=""><p>아이디어 관리</p></a>
-        <a href="{% url 'devtools:create' %}"><p>개발툴 등록</p></a>
-        <a href="{% url 'devtools:list' %}"><p>개발툴 관리</p></a>
+        <a href="{% url 'ideas:create' %}" class="nav-bar-content">아이디어 등록</a>
+        <a href="{% url 'ideas:main' %}" class="nav-bar-content">아이디어 관리</a>
+        <a href="{% url 'devtools:create' %}" class="nav-bar-content">개발툴 등록</a>
+        <a href="{% url 'devtools:list' %}" class="nav-bar-content">개발툴 관리</a>
     </div>
-    {%block content%}
+    <div class="line"></div>
+    <div class="box">
+        {%block content%}
 
-    {%endblock%}
+        {%endblock%}
+    </div>
 </body>
 {%block script %}
 

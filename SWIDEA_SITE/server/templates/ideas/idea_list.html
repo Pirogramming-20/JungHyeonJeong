@@ -8,9 +8,11 @@
 
 {% block content %}
     <div class="container">
-        <div class="container-title">
-            <p>Idea List</p>
-            <p>나의 아이디어를 잊지 말고 기록해보세요</p>
+        <div class="title-box">
+            <div class="container-title">
+                <p>Idea List</p>
+                <p>나의 아이디어를 잊지 말고 기록해보세요</p>
+            </div>
         </div>
 
         <div class="order">
@@ -45,27 +47,31 @@
             {% for idea in ideas %}
                 <div class="item">
                     <img src="{{ idea.image.url }}" alt="사진">
-                    <div data-url="{% url 'ideas:star' idea.pk %}" class="star">
-                        {% if idea.ideaStar == False %}
-                            <i class="fa-regular fa-star"></i>
-                        {% elif idea.ideaStar == True %}
-                            <i class="fa-solid fa-star"></i>
-                        {% endif %}
-                    </div>
-                    <div class="info">
-                        <a href="{% url 'ideas:detail' idea.pk %}" class="title">
-                            {{ idea.title }}
-                        </a>
-                        <p class="devtool">예상 개발 툴 : {{ idea.devtool }}</p>
-                        <p class="interest">아이디어 관심도 : 
-                            <i class="fa-solid fa-plus plus" data-url="{% url 'ideas:count' idea.pk %}"></i>
-                            <p class="countText">{{ idea.interest }}</p>
-                            <i class="fa-solid fa-minus minus" data-url="{% url 'ideas:count' idea.pk %}"></i>
-                        </p>
+                    <div class="item-content">
+                        <div data-url="{% url 'ideas:star' idea.pk %}" class="star-list">
+                            {% if idea.ideaStar == False %}
+                                <i class="fa-regular fa-star"></i>
+                            {% elif idea.ideaStar == True %}
+                                <i class="fa-solid fa-star"></i>
+                            {% endif %}
+                        </div>
+                        <div class="info">
+                            <a href="{% url 'ideas:detail' idea.pk %}" class="title">
+                                {{ idea.title }}
+                            </a>
+                            <p class="devtool">예상 개발 툴 : {{ idea.devtool }}</p>
+                            <div class="interest">아이디어 관심도 :
+                                <i class="fa-solid fa-plus plus" data-url="{% url 'ideas:count' idea.pk %}"></i>
+                                <p class="countText">{{ idea.interest }}</p>
+                                <i class="fa-solid fa-minus minus" data-url="{% url 'ideas:count' idea.pk %}"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
-
+        </div>
+        
+        <div class="page-box">
             {% for page_number in ideas.paginator.page_range %}
                 <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
             {% endfor %}
@@ -107,7 +113,7 @@
         });
     }
 
-    const star = document.querySelectorAll('.star');
+    const star = document.querySelectorAll('.star-list');
 
     star.forEach((star) =>{
         star.addEventListener('click', (event)=>{

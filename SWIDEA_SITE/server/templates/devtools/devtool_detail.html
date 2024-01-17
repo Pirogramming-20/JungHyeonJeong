@@ -8,34 +8,37 @@
 
 {% block content %}
     <div class="container">
-        <div class="container-title">
-            <p>DevTool Detail</p>
-            <p>개발툴 세부내용 페이지입니다. 자신이 다룰 수 있는 개발툴에 대한 상세내용을 확인해 보아요.</p>
+        <div class="title-box">
+            <div class="container-title">
+                <p>DevTool Detail</p>
+                <p>개발툴 세부내용 페이지입니다. 자신이 다룰 수 있는 개발툴에 대한 상세내용을 확인해 보아요.</p>
+            </div>
         </div>
         <div class="content">
             <div class="item">
                 <div class="info">
-                    <p class="name">{{ devtool.name }}</p>
+                    <p class="name-2">{{ devtool.name }}</p>
                     <p class="kind">{{ devtool.kind }}</p>
                     <p class="content">{{ devtool.content }}</p>
                 </div>
+                <div class="line-2"></div>
                 <div class="list">
                     <p>만들 수 있는 SW 목록</p>
                     {% for rel_idea in related_ideas %}
-                        <a href="{% url 'ideas:detail' rel_idea.pk %}" class="btn btn-success">
+                        <a href="{% url 'ideas:detail' rel_idea.pk %}" class="list-content">
                             {{rel_idea.title}}
                         </a>
                     {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
-    <div class="btns">
-        <a href="{% url 'devtools:update' devtool.pk %}" class="btn">수정하기</a>
-        <a href="{% url 'devtools:list' %}">목록</a>
-        <form action="{% url 'devtools:delete' devtool.pk %}" method="POST">
-            {%csrf_token%}
-            <button type="submit" class="btn">삭제하기</button>
-        </form>
+        <div class="btns">
+            <a href="{% url 'devtools:update' devtool.pk %}">수정하기</a>
+            <a href="{% url 'devtools:list' %}">목록</a>
+            <form action="{% url 'devtools:delete' devtool.pk %}" method="POST">
+                {%csrf_token%}
+                <button type="submit" class="btn">삭제하기</button>
+            </form>
+        </div>
     </div>
 {% endblock %}
