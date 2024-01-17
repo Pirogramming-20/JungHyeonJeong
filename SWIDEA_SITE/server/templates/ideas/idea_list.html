@@ -65,6 +65,10 @@
                     </div>
                 </div>
             {% endfor %}
+
+            {% for page_number in ideas.paginator.page_range %}
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Idea
 from .forms import IdeaForm
 from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator
 
 # Create your views here.
 def main(request):
@@ -20,8 +21,12 @@ def main(request):
     else:
         ideas = Idea.objects.order_by('title')
     
+    page = request.GET.get('page', '1')
+    paginator = Paginator(ideas, 4)
+    page_obj = paginator.get_page(page)
+
     ctx = {
-        'ideas' : ideas,
+        'ideas' : page_obj,
         'orderCondition' : orderCondition,
     }
     return render(request, 'ideas/idea_list.html', ctx)
