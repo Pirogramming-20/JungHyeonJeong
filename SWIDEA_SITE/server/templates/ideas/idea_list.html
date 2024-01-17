@@ -31,6 +31,11 @@
                     {% else %}
                     <option value="최신순">최신순</option>
                     {% endif %}
+                    {% if orderCondition == "찜하기순" %}
+                    <option value="찜하기순" selected>찜하기순</option>
+                    {% else %}
+                    <option value="찜하기순">찜하기순</option>
+                    {% endif %}
                 </select>
                 <input type="submit" value="정렬">
             </form>
@@ -40,15 +45,64 @@
             {% for idea in ideas %}
                 <div class="item">
                     <img src="{{ idea.image.url }}" alt="사진">
+                    <a href="{% url 'ideas:star' idea.pk %}" class="star">
+                        {% if idea.ideaStar == False %}
+                            <i class="fa-regular fa-star"></i>
+                        {% elif idea.ideaStar == True %}
+                            <i class="fa-solid fa-star"></i>
+                        {% endif %}
+                    </a>
                     <div class="info">
                         <a href="{% url 'ideas:detail' idea.pk %}" class="title">
                             {{ idea.title }}
                         </a>
                         <p class="devtool">예상 개발 툴 : {{ idea.devtool }}</p>
-                        <p class="interest">아이디어 관심도 : {{ idea.interest }}</p>
+                        <p class="interest">아이디어 관심도 : 
+                            <i class="fa-solid fa-plus plus" data-url="{% url 'ideas:count' idea.pk %}"></i>
+                            <p class="countText">{{ idea.interest }}</p>
+                            <i class="fa-solid fa-minus minus" data-url="{% url 'ideas:count' idea.pk %}"></i>
+                        </p>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
+
+{%block script %}
+<script>
+    const plus = document.querySelectorAll('.plus');
+    const minus = document.querySelectorAll('.minus');
+    const countText = document.querySelectorAll('.countText');
+
+    plus.forEach((plus, index) => {
+        plus.addEventListener('click', (event)=>{
+            console.log('a')
+            const url = event.target.getAttribute('data-url');
+            count_request(url, 'plus', index);
+        })
+    })
+
+    minus.forEach((minus, index) => {
+        minus.addEventListener('click', (event)=>{
+            console.log('b')
+            const url = event.target.getAttribute('data-url');
+            count_request(url, 'minus', index);
+        })
+    })
+
+    function count_request(url, btn_type, index){
+        fetch(url, {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'text',
+            },
+            body: btn_type,
+        })
+        .then(response => response.text())
+        .then(text => {
+            countText[index].innerText = text;
+        });
+    }
+</script>
+{%endblock%}
