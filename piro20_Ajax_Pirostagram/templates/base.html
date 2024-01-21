@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b85ea861c2.js" crossorigin="anonymous"></script>
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="{% url 'posts:main' %}">Pirostagram</a>
+        <a href="{% url 'posts:create' %}">게시글 작성하기</a>
+    </div>
+    <div class="line"></div>
+    
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    {% block script %}
+
+    {% endblock %}
+</body>
+</html>

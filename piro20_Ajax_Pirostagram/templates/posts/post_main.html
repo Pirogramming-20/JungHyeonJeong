@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>post list</title>
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <img src="{{ post.image.url }}" alt="사진">
+            
+            <div class="post-content">
+                <div class="like-{{ post.id }}" onclick="onClickLike('{{post.id}}')">
+                    {% if post.like == False %}
+                        <i class="fa-regular fa-heart"></i>
+                    {% elif post.like == True %}
+                        <i class="fa-solid fa-heart"></i>
+                    {% endif %}
+                </div>
+                <div class="content">{{ post.content }}</div>
+            </div>
+
+            <div class="comment-container">
+                <div class="comment-container-{{ post.id }}">
+                    {% for comment in post.comment_set.all %}
+                        <div class="comment-{{post.id}}-{{comment.id}}">{{ comment.content }}</div>
+                        <div class="delete-{{post.id}}-{{comment.id}}" onclick="onClickDelete('{{ post.id }}', '{{ comment.id }}')"><i class="fa-solid fa-trash"></i></div>
+                    {% endfor %}
+                </div>
+                <div class="comment-input">
+                        <textarea class="comment-content-{{ post.id }}" cols="50" rows="3"></textarea>
+                        <div class="send" onclick="onClickSend('{{ post.id }}')"><i class="fa-regular fa-paper-plane"></i></div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block script %}
+<script>
+    const requestLike = new XMLHttpRequest();
+    
+    const onClickLike = (id) =>{
+        const url = "like/";
+        requestLike.open("POST", url, true);
+        requestLike.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+        requestLike.send(JSON.stringify({id: id}));
+    }
+
+    requestLike.onreadystatechange = () => {
+        if(requestLike.readyState === XMLHttpRequest.DONE){
+            if (requestLike.status < 400){
+                const {id, type} = JSON.parse(requestLike.response)
+                const element = document.querySelector(`.like-${id}`);
+                
+                if(type === true){
+                    element.innerHTML = '<i class="fa-solid fa-heart"></i>';
+                }
+                else{
+                    element.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                }
+            }
+        }
+    }
+
+
+    const requestSend = new XMLHttpRequest();
+
+    const onClickSend = (id) =>{
+        const url = "create_comment/"
+        const comment_content = document.querySelector(`.comment-content-${id}`).value;
+        requestSend.open("POST", url, true);
+        requestSend.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+        requestSend.send(JSON.stringify({id: id, comment: comment_content}))
+        document.querySelector(`.comment-content-${id}`).value = '';
+    }
+
+    requestSend.onreadystatechange = () =>{
+        if(requestSend.readyState === XMLHttpRequest.DONE){
+            if(requestSend.status < 400){
+                const {post_id, comment_id, content} = JSON.parse(requestSend.response);
+
+                const newComment = document.createElement('div');
+                newComment.className = `comment-${post_id}-${comment_id}`;
+                newComment.textContent = content;
+
+                const newIcon = document.createElement('i');
+                newIcon.className = 'fa-solid fa-trash';
+
+                const newDiv = document.createElement('div');
+                newDiv.className = `delete-${post_id}-${comment_id}`;
+                newDiv.setAttribute('onclick', `onClickDelete(${post_id}, ${comment_id})`);
+
+                newDiv.appendChild(newIcon);
+
+                const parent = document.querySelector(`.comment-container-${post_id}`);
+                parent.appendChild(newComment);
+                parent.appendChild(newDiv);
+            }
+        }
+    }
+
+
+    const requestDelete = new XMLHttpRequest();
+
+    const onClickDelete = (post_id, comment_id) =>{
+        const url = "delete_comment/";
+        requestDelete.open("POST", url, true);
+        requestDelete.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+        requestDelete.send(JSON.stringify({post_id : post_id, comment_id : comment_id}));
+    }
+
+    requestDelete.onreadystatechange = ()=>{
+        if(requestDelete.readyState === XMLHttpRequest.DONE){
+            if(requestDelete.status < 400){
+                const {post_id, comment_id} = JSON.parse(requestDelete.response);
+                const element1 = document.querySelector(`.comment-${post_id}-${comment_id}`);
+                const element2 = document.querySelector(`.delete-${post_id}-${comment_id}`);
+                element1.remove();
+                element2.remove();
+            }
+        }
+    }
+</script>
+{% endblock %}
