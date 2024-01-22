@@ -1,0 +1,50 @@
+.nav-bar{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    align-items: center;
+    font-size: 20px;
+}
+
+.nav-bar a{
+    color: black;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.nav-bar a:nth-child(1){
+    color: green;
+}
+
+.line{
+    background-color: black;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+.container{
+    width: 70vw;
+    margin: auto;
+}
+
+.post img, .post-content, .comment-container{
+    width: 50vw;
+    display: block;
+    margin: 20px auto;
+}
+
+.content{
+    margin-top: 10px;
+}
+
+.comment{
+    display: flex;
+    justify-content: space-between;
+    margin: 13px 0;
+}
+
+.comment-input{
+    display: flex;
+    justify-content: space-between;
+}

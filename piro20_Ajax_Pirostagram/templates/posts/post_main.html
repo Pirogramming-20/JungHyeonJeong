@@ -24,12 +24,14 @@
             <div class="comment-container">
                 <div class="comment-container-{{ post.id }}">
                     {% for comment in post.comment_set.all %}
-                        <div class="comment-{{post.id}}-{{comment.id}}">{{ comment.content }}</div>
-                        <div class="delete-{{post.id}}-{{comment.id}}" onclick="onClickDelete('{{ post.id }}', '{{ comment.id }}')"><i class="fa-solid fa-trash"></i></div>
+                        <div class="comment-{{ post.id }} comment">
+                            <div class="comment-{{post.id}}-{{comment.id}}">{{ comment.content }}</div>
+                            <div class="delete-{{post.id}}-{{comment.id}}" onclick="onClickDelete('{{ post.id }}', '{{ comment.id }}')"><i class="fa-solid fa-trash"></i></div>
+                        </div>
                     {% endfor %}
                 </div>
                 <div class="comment-input">
-                        <textarea class="comment-content-{{ post.id }}" cols="50" rows="3"></textarea>
+                        <textarea class="comment-content-{{ post.id }}" cols="100" rows="3"></textarea>
                         <div class="send" onclick="onClickSend('{{ post.id }}')"><i class="fa-regular fa-paper-plane"></i></div>
                 </div>
             </div>
@@ -100,9 +102,13 @@
 
                 newDiv.appendChild(newIcon);
 
-                const parent = document.querySelector(`.comment-container-${post_id}`);
-                parent.appendChild(newComment);
-                parent.appendChild(newDiv);
+                const parent1 = document.querySelector(`.comment-container-${post_id}`);
+                const newParent = document.createElement('div');
+                newParent.className = `.comment-${ post_id }`;
+                newParent.className += ' comment';
+                newParent.appendChild(newComment);
+                newParent.appendChild(newDiv);
+                parent1.appendChild(newParent);
             }
         }
     }
